@@ -10,7 +10,7 @@ enum ExerciseType //ENUM for labelling records int the rext file
 	WEIGHT_LIFTING
 };
 //Abstract exercise class
-class Exericse
+class Exercise
 {
 public:
 	virtual void display() = 0; //for displaying the exercises
@@ -19,7 +19,7 @@ public:
 	virtual void loadDataFromFile(ifstream&) = 0; //for reading the data from the file
 };
 //run class to represent a run object.
-class Run : public Exericse
+class Run : public Exercise
 {
 protected:
 	double distanceInKm; //overall distnace of the run
@@ -75,13 +75,13 @@ public:
 	}
 };
 
-class Weightlifting : public Exericse
+class Weightlifting : public Exercise
 {
 private:
 	int weight; //weights being lifted
 	int reps; //reps per set
 	int sets; //number of sets
-	string type; //type of exericse
+	string type; //type of exercise
 
 	float calculateTotalWeight() //cumalative total weight
 	{
@@ -124,7 +124,7 @@ class Person
 private:
 	string name; //store the name
 	int age; //store the age
-	vector<Exericse*> exercises; //store a list of exercises; //composition
+	vector<Exercise*> exercises; //store a list of exercises; //composition
 public:
 	Person() { age = 0; }
 
@@ -172,7 +172,7 @@ public:
 		return age;
 	}
 	//function to return the exercises that the person has stored
-	vector<Exericse*> getExercises()
+	vector<Exercise*> getExercises()
 	{
 		return exercises;
 	}
